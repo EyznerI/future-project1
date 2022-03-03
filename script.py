@@ -12,8 +12,30 @@
 # print (user_age)
 # print(user_name + "," + " your age is " + str(user_age))
 # print(f"{user_name}, your age is {user_age}")
-numbers = input("enter nums using comma:").split(",")
-summ = 0
-for z in numbers:
-    summ = summ+ int(z)**3
-print(summ)
+# numbers = input("enter nums using comma:").split(",")
+# summ = 0
+# for z in numbers:
+#     summ = summ+ int(z)**3
+# print(summ)
+x = 10
+x_list = [ 10,30, 50, 6,90,  ]
+for i in x_list:
+    print(i)
+for i in range(0,50,4): # (от, до, шаг)
+   print (i)
+print(len(x_list))   
+if len(x_list) >0 or   len(x_list)< 5:
+    print("list has some elements")
+else:
+    print ("no elements")
+if x in x_list:
+    print("10 is in a list")
+age = 18
+x_list = [10,20,30,-50]
+for i in x_list:
+    if i <age:
+        print(i)
+    else:
+        print("adult")
+user name = ""
+

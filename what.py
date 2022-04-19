@@ -1,3 +1,4 @@
+import random
 # points = []
 # lines = ["Petya", 12, 43, 0]
 # print(len(lines))
@@ -15,6 +16,7 @@
 #     print(k, v)
 
 def generate_id(count):
+    rnd_id = None
     for i in range(count):
         rnd_id = str(random.randint(0, 9)) + str(rnd_id)
     return rnd_id
@@ -30,9 +32,9 @@ while a == "Yes":
     id_costumers = input("Do you have account?: ")
 
     if   id_costumers == "Yes":
-         b = input("Please eneter your id: ")
-        for i in customers:
-        b = input("hello, please, enter id: ")
+        b = input("Please eneter your id: ")
+        # for i in customers:
+        #     b = input("hello, please, enter id: ")
         for i in costomers:
             if i["id"] == b:
                 New_product = input("please, choice product ")
@@ -45,10 +47,10 @@ while a == "Yes":
         cust_new["id"] = generate_id(8)
         cust_new["name"] = input("enter name: ")
         cust_new["age"] = input("enter age: ")
-        cust_new["product"] = input("choice produc: t").split(", ")
-        custumers.append(cust_new)
-        print(customers)
-        cust_new["products"] = input("choice produc: t").split(", ")
+        cust_new["product"] = input("choice produc: ").split(", ")
+        costumers.append(cust_new)
+        print(costomers)
+        cust_new["products"] = input("choice produc: ").split(", ")
         costomers.append(cust_new)
         print(costomers)
     else:

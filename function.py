@@ -42,8 +42,6 @@ while True:
     term = input("terminate (t) or continue(c)? ")
     if term == "t":
         break
-    elif term == "c":
-        print("terminate (t) or continue(c)? ")
     else:
         continue 
         

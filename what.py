@@ -27,19 +27,19 @@ generate_id(10)
 
 costomers = [{"id": "dcf124ed", "name": "Luke", "age": 43, "products": ["water", "fish"]}]
 a = input("hello,  do you want buy smth.?: ")
-while a == "Yes":
-    id_costumers = input(" please, enter your account: ")
+while a == "yes":
+    # id_costumers = input(" please, enter your account: ")
     id_costumers = input("Do you have account?: ")
 
-    if   id_costumers == "Yes":
+    if   id_costumers == "yes":
         b = input("Please eneter your id: ")
         # for i in customers:
         #     b = input("hello, please, enter id: ")
         for i in costomers:
             if i["id"] == b:
                 New_product = input("please, choice product ")
-                i[products].append(New_product)
-                print(costumers)
+                # i["products"].append(New_product)
+                # print(costomers)
                 i["products"].append(New_product)
                 print(costomers)
     elif id_costumers == "No":
@@ -47,10 +47,10 @@ while a == "Yes":
         cust_new["id"] = generate_id(8)
         cust_new["name"] = input("enter name: ")
         cust_new["age"] = input("enter age: ")
-        cust_new["product"] = input("choice produc: ").split(", ")
-        costumers.append(cust_new)
+        # cust_new["product"] = input("choice produc: ").split(", ")
+        costomers.append(cust_new)
         print(costomers)
-        cust_new["products"] = input("choice produc: ").split(", ")
+        cust_new["products"] = input("choice product: ").split(", ")
         costomers.append(cust_new)
         print(costomers)
     else:
@@ -58,3 +58,6 @@ while a == "Yes":
     ex = input(" if you want finish programm, enter <exit> ")
     if ex == "exit":
         break
+        print( "please, enter only <exit> or No")
+    else:
+        continue

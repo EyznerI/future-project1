@@ -16,7 +16,7 @@ import random
 #     print(k, v)
 
 def generate_id(count):
-    rnd_id = None
+    rnd_id = ""
     for i in range(count):
         rnd_id = str(random.randint(0, 9)) + str(rnd_id)
     return rnd_id
@@ -37,12 +37,13 @@ while a == "yes":
         #     b = input("hello, please, enter id: ")
         for i in costomers:
             if i["id"] == b:
-                New_product = input("please, choice product ")
+                new_product = input("please, choice product: ")
                 # i["products"].append(New_product)
                 # print(costomers)
-                i["products"].append(New_product)
+                i["products"].append(new_product)
                 print(costomers)
-    elif id_costumers == "No":
+                break
+    elif id_costumers == "no":
         cust_new = {}
         cust_new["id"] = generate_id(8)
         cust_new["name"] = input("enter name: ")
@@ -54,10 +55,7 @@ while a == "yes":
         costomers.append(cust_new)
         print(costomers)
     else:
-        print( "please, enter only Yes or No")
+        print( "please, enter only yes or no")
     ex = input(" if you want finish programm, enter <exit> ")
     if ex == "exit":
         break
-        print( "please, enter only <exit> or No")
-    else:
-        continue

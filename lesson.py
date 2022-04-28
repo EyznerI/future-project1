@@ -1,32 +1,47 @@
-import random
-def generate_id(count): 
-    rnd_id = 0
-    for i in range(count):
-        rnd_id = str(random.randint(0, 9)) + str(rnd_id)
-    return rnd_id
+# f = open("text.txt", "w")
+# f.write("Hello\n")
+# f.write("world")
 
-# id = str(random.expovariate(8))
+# f = open("text.txt", "a")
+# f.write("name\n")
+# f.write("age")
+
+# f.close()
+# import random
+
+# def generate_num(count):
+#     rnd_id = ""
+#     for i in range(count):
+#         rnd_id = str(random.randint(0, 9)) + str(rnd_id)
+#     return rnd_id
+
+# f = open("text.txt", "w")
+# for n in range(10):
+#     f.write(f"{generate_num(8)}\n")
+
+# f.close()
+
+# import random
+# print(random.randint(0, 9))
 
 
-costomers = [{"id": "dcf124ed", "name": "Luke", "age": 43, "products": ["water", "fish"]}]
-a = input("hello, do you wany buy: ")
-while a == "Yes":
-    id_costumers = input("do you have account?: ")
+# customers = [{"name": "Luke", "age": "43", "products": ["water", "fish"]},
+#             {"name": "Mike", "age": "43", "products": ["water", "fish"]},
+#             {"name": "Pablo", "age": "43", "products": ["water", "fish"]}]
+            
+# with open("text.txt", "r+") as f:
+#     for customer in customers:
+#         f.write(f"{customer}\n")
+customers = []
 
-    if   id_costumers == "Yes":
-        b = input("hello, please, enter id: ")
-        for i in costomers:
-            if i["id"] == b:
-                New_product = input("please, choice product ")
-                i["products"].append(New_product)
-                print(costomers)
-    elif id_costumers == "No":
-        cust_new = {}
-        cust_new["id"] = generate_id(8)
-        cust_new["name"] = input("enter name: ")
-        cust_new["age"] = input("enter age: ")
-        cust_new["products"] = input("choice produc: t").split(", ")
-        costomers.append(cust_new)
-        print(costomers)
-    else:
-        print( "please, enter only Yes or No")
+with open ("text.txt", 'r+') as f:
+    data = f.readlines()
+    for line in data:
+        user = line.split(",")
+        customer = {}
+        customer["name"] = user[0]
+        customer["age"] = int(user[1].split("\n")[0])
+        customer["products"] = user[2].split(";")
+        
+        customers.append(customer)
+print(customers)

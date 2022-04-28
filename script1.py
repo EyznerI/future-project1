@@ -21,7 +21,7 @@ print(customers[0].name)
 for c in customers:
     print(c.name, c.age)
 
-# user1 = Customer("Petya", 25)
+ user1 = Customer("Petya", 25)
 # user1.add_product("oil")
 # user2 = Customer("Kate", 36)
 # user2.add_product("sosigise")

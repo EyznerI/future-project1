@@ -1,0 +1,153 @@
+import random
+import json
+from pathlib import Path
+import os
+
+
+def generate_id(count): 
+    random_id = str(random.randint(1, 9))
+    for counter in range(count - 1):
+        random_id = str(random_id) + str(random.randint(0, 9))
+    return int(random_id)
+
+
+def search_for_id(search_data, id_to_search):
+    search_result = -1
+
+    for element in search_data['customers']:
+        if int(element['id']) == int(id_to_search):
+            search_result = search_data['customers'].index(element)
+
+    return search_result
+
+
+if __name__ == '__main__':
+
+    answer_1 = input("Greetings, customer. Do you want to buy anything? (Yes/No):")
+
+
+    while not answer_1 in ["yes", "no"]:
+        answer_1 = input("Please, answer only 'yes' or 'no':")
+
+    if answer_1 == "yes":
+
+        file = Path('customer_data.txt')
+        file.touch(exist_ok=True)
+
+        f = open(file, 'r')
+
+        if os.stat(file).st_size == 0:
+            f.close()
+            f = open(file, 'w')
+            json.dump({'customers': []}, f, indent=4)
+            f.close()
+            f = open(file, 'r')
+
+        data = json.load(f)
+
+        print(data)
+
+
+        customer_id = -1
+        customer_name = ""
+        customer_age = -1
+        customer_order_list = []
+        customer_index = 0
+
+        f.close()
+
+        # Authentication
+
+        answer_2 = input("Do you have an ID number? (Yes/No):")
+
+        while not answer_2 in ["yes", "no"]:
+            answer_2 = input("Please, answer only 'Yes' or 'No':")
+
+        if answer_2 == "yes":
+            print("Let's search for you ID")
+
+            answer_id = input("Please, enter your ID:")
+            while search_for_id(data, answer_id) == -1:
+                if answer_id.isdigit() and len(answer_id) == 8:
+                    answer_id = input("Customer with ID " + answer_id + " not found. Please, enter your ID (8 digits):")
+                else:
+                    answer_id = input("It is invalid ID number. Please, enter your ID (8 digits):")
+
+            customer_id = answer_id
+
+            customer_index = search_for_id(data, customer_id)
+            print("Welcome back, " + data['customers'][customer_index]['name'] + ".")
+        elif answer_2 == "No":
+            print("Let's create an ID for you")
+
+            answer_name = input("Please, enter your name:")
+
+
+            while not answer_name.isalpha():
+                answer_name = input("Please, enter your name using only Latin letters:")
+
+            print("Your name is " + answer_name)
+
+            answer_age = input("Please, enter your age:")
+
+
+            while not answer_age.isdigit():
+                answer_age = input("It isn't a number. Please, enter your age |using only numbers:")
+
+            print("Your age is " + answer_age)
+
+
+            customer_name = answer_name
+            customer_age = int(answer_age)
+            customer_id = generate_id(8)
+
+            while search_for_id(data, customer_id) != -1:
+                customer_id = generate_id(8)
+
+            print("Your new ID is " + str(customer_id))
+
+        else:
+            print("Invalid answer")
+
+        # Purchasing
+
+        answer_stop = ""
+
+        while answer_stop != "No":
+
+            answer_3 = input("Please, write down the item you want to purchase:")
+
+
+            while not answer_3.isalpha():
+                answer_3 = input("Please, enter order item using only Latin letters:")
+
+            customer_order_list.append(answer_3)
+
+            answer_stop = input("Do you want to order anything else? (Yes/No):")
+
+            while not answer_stop in ["yes", "no"]:
+                answer_stop = input("Please, answer only 'Yes' or 'No':")
+
+        print("Your order is:")
+        print(customer_order_list)
+
+        data_new = data
+
+        if answer_2 == "yes":
+            data_new['customers'][customer_index]["products"] = customer_order_list
+        elif answer_2 == "No":
+            data_new['customers'].append(
+                {"id": customer_id, "name": customer_name, "age": customer_age, "products": customer_order_list})
+
+        f = open('customer_data.txt', 'w')
+
+        json.dump(data_new, f, indent=4)
+
+        print("Thanks for coming. See you again!")
+
+        f.close()
+
+    elif answer_1 == "no":
+        print("Thanks for coming. See you again!")
+    else:
+        print("Invalid answer")

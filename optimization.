@@ -23,7 +23,7 @@ def search_for_id(search_data, id_to_search):
 
 if __name__ == '__main__':
 
-    answer_1 = input("Greetings, customer. Do you want to buy anything? (Yes/No):")
+    answer_1 = input("Greetings, customer. Do you want to buy anything? (yes/no):")
 
 
     while not answer_1 in ["yes", "no"]:
@@ -58,10 +58,10 @@ if __name__ == '__main__':
 
         # Authentication
 
-        answer_2 = input("Do you have an ID number? (Yes/No):")
+        answer_2 = input("Do you have an ID number? yes/no):")
 
         while not answer_2 in ["yes", "no"]:
-            answer_2 = input("Please, answer only 'Yes' or 'No':")
+            answer_2 = input("Please, answer only 'yes' or 'no':")
 
         if answer_2 == "yes":
             print("Let's search for you ID")
@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
         answer_stop = ""
 
-        while answer_stop != "No":
+        while answer_stop != "no":
 
             answer_3 = input("Please, write down the item you want to purchase:")
 
@@ -123,10 +123,10 @@ if __name__ == '__main__':
 
             customer_order_list.append(answer_3)
 
-            answer_stop = input("Do you want to order anything else? (Yes/No):")
+            answer_stop = input("Do you want to order anything else? (yes/no):")
 
             while not answer_stop in ["yes", "no"]:
-                answer_stop = input("Please, answer only 'Yes' or 'No':")
+                answer_stop = input("Please, answer only 'yes' or 'no':")
 
         print("Your order is:")
         print(customer_order_list)
@@ -135,7 +135,7 @@ if __name__ == '__main__':
 
         if answer_2 == "yes":
             data_new['customers'][customer_index]["products"] = customer_order_list
-        elif answer_2 == "No":
+        elif answer_2 == "no":
             data_new['customers'].append(
                 {"id": customer_id, "name": customer_name, "age": customer_age, "products": customer_order_list})
 
